@@ -1,4 +1,4 @@
-# Swisstronik Tesnet Techinal Task 1
+# Swisstronik Tesnet Techinal Task 2
 
 link : [Click!](https://www.swisstronik.com/testnet2/dashboard)
 
@@ -15,11 +15,11 @@ EVM :
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/nornetics/hardhat-contract-deploy
+git clone https://github.com/nornetics/swisstronik-mint-token-erc20
 ```
 
 ```
-cd hardhat-deploy-contract
+cd swisstronik-erc20-mint-token
 ```
 
 ### 2. Install Dependency
@@ -39,41 +39,27 @@ PRIVATE_KEY="your private key"
 ### 4. Create Smart Contract
 
 - Open contract folder
-- Create Hello_swtr.sol file
+- Create Token.sol file
 - Copy this code and paste there
+- Feel free to modify token name and token symbol
 
 ```
-/// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.19;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-//This contract is only intended for testing purposes
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract Swisstronik {
-    string private message;
+contract TestToken is ERC20 {
+    constructor()ERC20("IzzyToken","IZZY"){}
 
-    /**
-     * @dev Constructor is used to set the initial message for the contract
-     * @param _message the message to associate with the message variable.
-     */
-    constructor(string memory _message) payable{
-        message = _message;
+    function mint1000tokens() public {
+        _mint(msg.sender,1000*10**18);
     }
 
-    /**
-     * @dev setMessage() updates the stored message in the contract
-     * @param _message the new message to replace the existing one
-     */
-    function setMessage(string memory _message) public {
-        message = _message;
+    function burn1000tokens() public{
+        _burn(msg.sender,1000*10**18);
     }
 
-    /**
-     * @dev getMessage() retrieves the currently stored message in the contract
-     * @return The message associated with the contract
-     */
-    function getMessage() public view returns(string memory){
-        return message;
-    }
 }
 ```
 
@@ -89,19 +75,31 @@ npm run compile
 npm run deploy
 ```
 
-### 7. Get Message
+### 7. Mint Token
 
 ```bash
-npm run get-message
+npm run mint
 ```
 
-### 8. Get Message
+### 8. Check Supply
 
 ```bash
-npm run set-message
+npm run check-supply
 ```
 
-### 9. Finsihed
+### 9. Check Balance
+
+```bash
+npm run balance-of
+```
+
+### 10. Tranfer Token
+
+```bash
+npm run transfer
+```
+
+### 11. Finsihed
 
 - Open the deployed-adddress.ts (location in utils folder)
 - Copy the address and paste the address in testnet dashboard
@@ -109,4 +107,3 @@ npm run set-message
 
 by :
 github : [nornetics](https://github.com/nornetics)
-
