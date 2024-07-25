@@ -1,4 +1,4 @@
-# Swisstronik Tesnet Techinal Task 2
+# Swisstronik Task 4 (Mint a ERC20 Token)
 
 link : [Click!](https://www.swisstronik.com/testnet2/dashboard)
 
@@ -50,7 +50,7 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract TestToken is ERC20 {
-    constructor()ERC20("IzzyToken","IZZY"){}
+    constructor()ERC20("NornToken","NRN"){} 
 
     function mint1000tokens() public {
         _mint(msg.sender,1000*10**18);
@@ -59,7 +59,7 @@ contract TestToken is ERC20 {
     function burn1000tokens() public{
         _burn(msg.sender,1000*10**18);
     }
-
+    
 }
 ```
 
@@ -99,7 +99,7 @@ npm run balance-of
 npm run transfer
 ```
 
-### 11. Finsihed
+### 11. Finished
 
 - Open the deployed-adddress.ts (location in utils folder)
 - Copy the address and paste the address in testnet dashboard
